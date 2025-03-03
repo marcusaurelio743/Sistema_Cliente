@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 @Entity
 public class Cliente {
@@ -19,7 +22,13 @@ public class Cliente {
 	@Column(nullable = false, length = 11)
 	private String cpf;
 	@Column(name = "data_cadastro")
+	@JsonFormat(pattern = "dd/M/yyyy")
 	private LocalDate dataCadastro;
+	
+	@PrePersist
+	public void prePersit() {
+		setDataCadastro(LocalDate.now());
+	}
 
 	public Long getId() {
 		return id;
