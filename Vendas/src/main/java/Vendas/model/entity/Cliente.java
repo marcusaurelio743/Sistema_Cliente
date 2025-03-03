@@ -14,48 +14,60 @@ public class Cliente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(nullable = false,length = 200)
+	@Column(nullable = false, length = 200)
 	private String nome;
-	@Column(nullable = false,length = 11)
+	@Column(nullable = false, length = 11)
 	private String cpf;
-	@Column
+	@Column(name = "data_cadastro")
 	private LocalDate dataCadastro;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getCpf() {
 		return cpf;
 	}
+
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+
 	public LocalDate getDataCadastro() {
 		return dataCadastro;
 	}
+
 	public void setDataCadastro(LocalDate dataCadastro) {
 		this.dataCadastro = dataCadastro;
 	}
+
 	public Cliente() {
 		super();
 	}
+
 	public Cliente(String nome, String cpf) {
 		super();
 		this.nome = nome;
 		this.cpf = cpf;
 	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -67,11 +79,10 @@ public class Cliente {
 		Cliente other = (Cliente) obj;
 		return Objects.equals(id, other.id);
 	}
+
 	@Override
 	public String toString() {
 		return "Cliente [id=" + id + ", nome=" + nome + ", cpf=" + cpf + ", dataCadastro=" + dataCadastro + "]";
 	}
-	
-	
-	
+
 }
