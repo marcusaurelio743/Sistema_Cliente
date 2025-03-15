@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
 
@@ -22,12 +23,12 @@ public class Cliente {
 	private Long id;
 	
 	@Column(nullable = false, length = 200)
-	@NotEmpty
+	@NotEmpty(message = "{campo.nome.obrigatorio}")
 	private String nome;
 	
 	@Column(nullable = false, length = 11)
-	@CPF
-	@NotEmpty
+	@CPF(message = "{campo.cpf.invalido}")
+	@NotNull(message = "{campo.cpf.obrigatorio}")
 	private String cpf;
 	
 	@Column(name = "data_cadastro")
