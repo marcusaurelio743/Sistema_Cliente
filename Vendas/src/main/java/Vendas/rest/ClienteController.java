@@ -36,7 +36,7 @@ public class ClienteController {
 	public Cliente buscarPorId(@PathVariable Long id) {
 		return repository
 				.findById(id)
-					.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+					.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"cliente não encontrado"));
 	}
 	
 	@DeleteMapping("{id}")
@@ -48,7 +48,7 @@ public class ClienteController {
 					repository.delete(cliente);
 					return Void.TYPE;
 				})
-					.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND));
+					.orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND,"cliente não encontrado"));
 	}
 	
 	@PutMapping("{id}")
